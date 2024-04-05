@@ -1,1 +1,98 @@
-<p>witch-view works!</p>
+<br>
+<label>
+  <select matNativeControl id="diaDeLaSemanaSelector" [(ngModel)]="selectedWeekDay" (change)="filterTasksByWeekDay(selectedWeekDay)">
+    <option value="1">Lunes</option>
+    <option value="2">Martes</option>
+    <option value="3">Miercoles</option>
+    <option value="4">Jueves</option>
+    <option value="5">Viernes</option>
+    <option value="6">Sabado</option>
+    <option value="7">Domingo</option>
+  </select>
+</label>
+<br>
+<br>
+<table mat-table [dataSource]="tasks">
+
+  <ng-container matColumnDef="Id">
+    <th mat-header-cell *matHeaderCellDef> Id </th>
+    <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="Descripción tarea">
+    <th mat-header-cell *matHeaderCellDef> Descripcion de tarea </th>
+    <td mat-cell *matCellDef="let element"> <input type="text" disabled="true" value="{{element.descripcionTarea}}"  [(ngModel)]="element.descripcionTarea">  </td>
+  </ng-container>
+
+
+  <ng-container matColumnDef="Dia de la semana">
+    <th mat-header-cell *matHeaderCellDef> Dia de la Semana </th>
+    <td mat-cell *matCellDef="let element"> <select disabled="true" matNativeControl [(ngModel)]="element.diaDeLaSemana" >
+      <option value="1">Lunes</option>
+      <option value="2">Martes</option>
+      <option value="3">Miercoles</option>
+      <option value="4">Jueves</option>
+      <option value="5">Viernes</option>
+      <option value="6">Sabado</option>
+      <option value="7">Domingo</option>
+    </select>  </td>
+  </ng-container>
+
+
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumnsForTasks"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumnsForTasks;"></tr>
+</table>
+<br>
+<br>
+<label>Tarea</label>
+<br>
+<select matNativeControl id="selectorDeTareas" [(ngModel)]="selectedWeekDay">
+  <option *ngFor="let item of tasks" [value]="item.id">{{ item.descripcionTarea }}</option>
+</select>
+<br>
+<label>Ciudadano</label>
+<br>
+<select matNativeControl id="selectorDeCiudadanos" [(ngModel)]="selectedCitizen" >
+  <option *ngFor="let item of citizens" [value]="item.id">{{ item.nombre }}</option>
+</select>
+<br>
+<button (click)="asignarTarea()">Asignar tarea</button>
+<br>
+<br>
+<table mat-table [dataSource]="assignatedTasks">
+
+  <ng-container matColumnDef="Id">
+    <th mat-header-cell *matHeaderCellDef> Id </th>
+    <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="Tarea">
+    <th mat-header-cell *matHeaderCellDef> Tarea </th>
+    <td mat-cell *matCellDef="let element"> <input type="text" disabled="true" value="{{element.descripcionTarea}}"  [(ngModel)]="element.idTareaNavigation.descripcionTarea">  </td>
+  </ng-container>
+
+
+  <ng-container matColumnDef="Dia de la semana">
+    <th mat-header-cell *matHeaderCellDef> Dia de la Semana </th>
+    <td mat-cell *matCellDef="let element"> <select disabled="true" matNativeControl [(ngModel)]="element.idTareaNavigation.diaDeLaSemana" >
+      <option value="1">Lunes</option>
+      <option value="2">Martes</option>
+      <option value="3">Miercoles</option>
+      <option value="4">Jueves</option>
+      <option value="5">Viernes</option>
+      <option value="6">Sabado</option>
+      <option value="7">Domingo</option>
+    </select>  </td>
+  </ng-container>
+
+  <ng-container matColumnDef="Ciudadano asignado">
+    <th mat-header-cell *matHeaderCellDef> Ciudadano asignado </th>
+    <td mat-cell *matCellDef="let element"> <input type="text" disabled="true" value="{{element.descripcionTarea}}"  [(ngModel)]="element.idCiudadanoNavigation.nombre">  </td>
+  </ng-container>
+
+
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumnsForTaskAssignation"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumnsForTaskAssignation;"></tr>
+</table>

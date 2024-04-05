@@ -61,27 +61,38 @@ deleteCitizen(args: any){
 
 
 addTask(){
-  var inputValue = (<HTMLInputElement>document.getElementById("citizenName")).value;
 
-  this.eyeService.registerCitizen(inputValue).subscribe();
+  var inputValue = (<HTMLInputElement>document.getElementById("taskDescription")).value;
+  var selectorValue = (<HTMLInputElement>document.getElementById("diaDeLaSemanaSelector")).value;
+
+
+  var task ={
+    "DescripcionTarea": inputValue,
+    "DiaDeLaSemana": selectorValue
+  }
+
+  this.eyeService.registerTask(task).subscribe();
 
 }
 
 editTask(args: any){
 
-  var citizen = {
+
+  var task = {
     "id": args.id,
-    "nombre": args.nombre
+    "descripcionTarea": args.descripcionTarea,
+    "diaDeLaSemana": args.diaDeLaSemana
+
   }
 
-  this.eyeService.updateCitizen(citizen).subscribe();
+  this.eyeService.updateTask(task).subscribe();
 
 }
 
 
 
 deleteTask(args: any){
-  this.eyeService.deleteCitizen(args).subscribe();
+  this.eyeService.deleteTask(args).subscribe();
 
 
 }

@@ -36,7 +36,7 @@
 <br>
 <br>
 <label>
-  <select matNativeControl required>
+  <select matNativeControl id="diaDeLaSemanaSelector">
     <option value="1">Lunes</option>
     <option value="2">Martes</option>
     <option value="3">Miercoles</option>
@@ -65,7 +65,15 @@
 
   <ng-container matColumnDef="Dia de la semana">
     <th mat-header-cell *matHeaderCellDef> Dia de la Semana </th>
-    <td mat-cell *matCellDef="let element"> <input type="text" value="{{element.DiaDeLaSemana}}"  [(ngModel)]="element.DiaDeLaSemana">  </td>
+    <td mat-cell *matCellDef="let element"> <select matNativeControl [(ngModel)]="element.diaDeLaSemana" >
+      <option value="1">Lunes</option>
+      <option value="2">Martes</option>
+      <option value="3">Miercoles</option>
+      <option value="4">Jueves</option>
+      <option value="5">Viernes</option>
+      <option value="6">Sabado</option>
+      <option value="7">Domingo</option>
+    </select>  </td>
   </ng-container>
 
   <ng-container matColumnDef="Acción">

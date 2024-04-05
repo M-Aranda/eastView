@@ -9,6 +9,7 @@ export class EyeServiceService {
 
   citizenApiUrl = 'http://localhost:5052/api/Citizen';
   taskApiUrl ='http://localhost:5052/api/Task';
+  assignatedTasksApiUrl ='http://localhost:5052/api/AsignacionTarea';
 
   constructor(private http: HttpClient) { }
 
@@ -35,9 +36,13 @@ export class EyeServiceService {
     return this.http.get<any[]>(`${this.taskApiUrl}/GetTasks`);
   }
 
-  registerTask(task: String): Observable<any> {
+  getTasksByWeekDay(weekDay: number): Observable<any[]> {
+    return this.http.get<any[]>(`${this.taskApiUrl}/GetTasksByWeekDay/${weekDay}`);
+  }
 
-    return this.http.post<any>(`${this.taskApiUrl}/RegisterTask/${task}`, task);
+  registerTask(task: any): Observable<any> {
+
+    return this.http.post<any>(`${this.taskApiUrl}/RegisterTask`, task);
   }
 
   updateTask(task: any): Observable<any> {
@@ -46,6 +51,10 @@ export class EyeServiceService {
 
   deleteTask(id: number): Observable<any> {
     return this.http.delete<any>(`${this.taskApiUrl}/DeleteTask/${id}`);
+  }
+
+  getAssignatedTasks(): Observable<any[]> {
+    return this.http.get<any[]>(`${this.assignatedTasksApiUrl}/GetAssignatedTasks`);
   }
 
 
