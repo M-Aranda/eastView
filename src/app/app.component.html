@@ -1,7 +1,12 @@
-<button mat-button (click)="displayEyeView()">Eye view</button>
-<br>
-<app-eye-view *ngIf="eyeViewIsShown"></app-eye-view>
-<br>
-<button mat-button (click)="displayWitchView()">Witch view</button>
-<br>
-<app-witch-view *ngIf="witchViewIsShown"></app-witch-view>
+<div class="container">
+  <div class="button-container">
+    <button mat-button (click)="displayEyeView()">Eye view</button>
+    <br>
+    <app-eye-view  *ngIf="eyeViewIsShown"></app-eye-view>
+  </div>
+  <div class="button-container">
+    <button mat-button (click)="displayWitchView()">Witch view</button>
+    <br>
+    <app-witch-view *ngIf="witchViewIsShown"></app-witch-view>
+  </div>
+</div>

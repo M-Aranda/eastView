@@ -6,3 +6,41 @@ table {
   margin-bottom: 20px;
 
 }
+
+label {
+  color: white;
+  margin-bottom: 5px;
+  display: block;
+}
+
+
+input[type="text"] {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 100%;
+}
+
+
+select {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 100%;
+}
+
+
+button {
+  padding: 10px 20px;
+  background-color: lightgreen;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  cursor: pointer;
+}
+
+
+button:hover {
+  background-color: limegreen;
+}
+

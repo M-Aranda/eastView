@@ -37,6 +37,7 @@ addCitizen(){
   var inputValue = (<HTMLInputElement>document.getElementById("citizenName")).value;
 
   this.eyeService.registerCitizen(inputValue).subscribe();
+  location.reload();
 
 }
 
@@ -48,6 +49,7 @@ editCitizen(args: any){
   }
 
   this.eyeService.updateCitizen(citizen).subscribe();
+  location.reload();
 
 }
 
@@ -55,6 +57,7 @@ editCitizen(args: any){
 
 deleteCitizen(args: any){
   this.eyeService.deleteCitizen(args).subscribe();
+  location.reload();
 
 }
 
@@ -72,6 +75,7 @@ addTask(){
   }
 
   this.eyeService.registerTask(task).subscribe();
+  location.reload();
 
 }
 
@@ -86,6 +90,7 @@ editTask(args: any){
   }
 
   this.eyeService.updateTask(task).subscribe();
+  location.reload();
 
 }
 
@@ -93,6 +98,7 @@ editTask(args: any){
 
 deleteTask(args: any){
   this.eyeService.deleteTask(args).subscribe();
+  location.reload();
 
 
 }

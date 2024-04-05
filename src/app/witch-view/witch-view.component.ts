@@ -69,6 +69,7 @@ assignTask(){
 
 
   this.eyeService.assignTask(assignment).subscribe();
+  location.reload();
 
 
 }
