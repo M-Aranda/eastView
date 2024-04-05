@@ -1,3 +1,8 @@
+1. Creado con Angular, en Visual Studio Code
+2. Navegar a la carpeta eastView desde la terminal
+3. npm start
+4. Abrir ventana de navegacion con direccion 'localhost:4200', DESPUÉS de tener el backend corriendo (proyecto IlisBackEnd)
+
 # EastView
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.3.
