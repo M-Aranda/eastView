@@ -2,7 +2,7 @@
 <label text="Name">
   <input type="text" #citizenName id="citizenName" placeholder="Input citizen name">
 </label>
-<button (click)="addCitizen()">Add citizen</button>
+<button (click)="addCitizen()">Agregar ciudadano</button>
 <br>
 
 <table mat-table [dataSource]="citizens">
@@ -24,9 +24,62 @@
     </td>
   </ng-container>
 
-  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  <tr mat-header-row *matHeaderRowDef="displayedColumnsForCitizens"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumnsForCitizens;"></tr>
 </table>
+<br>
+<br>
+
+<label text="Agregar tarea">
+  <input type="text" #taskDescription id="taskDescription" placeholder="Ingresar tarea">
+</label>
+<br>
+<br>
+<label>
+  <select matNativeControl required>
+    <option value="1">Lunes</option>
+    <option value="2">Martes</option>
+    <option value="3">Miercoles</option>
+    <option value="4">Jueves</option>
+    <option value="5">Viernes</option>
+    <option value="6">Sabado</option>
+    <option value="7">Domingo</option>
+  </select>
+</label>
+<br>
+<br>
+<button (click)="addTask()">Agregar tarea</button>
+<br>
+<table mat-table [dataSource]="tasks">
+
+  <ng-container matColumnDef="Id">
+    <th mat-header-cell *matHeaderCellDef> Id </th>
+    <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="Descripción tarea">
+    <th mat-header-cell *matHeaderCellDef> Descripcion de tarea </th>
+    <td mat-cell *matCellDef="let element"> <input type="text" value="{{element.descripcionTarea}}"  [(ngModel)]="element.descripcionTarea">  </td>
+  </ng-container>
+
+
+  <ng-container matColumnDef="Dia de la semana">
+    <th mat-header-cell *matHeaderCellDef> Dia de la Semana </th>
+    <td mat-cell *matCellDef="let element"> <input type="text" value="{{element.DiaDeLaSemana}}"  [(ngModel)]="element.DiaDeLaSemana">  </td>
+  </ng-container>
+
+  <ng-container matColumnDef="Acción">
+    <th mat-header-cell *matHeaderCellDef> Acción </th>
+    <td mat-cell *matCellDef="let element"> <button (click)="editTask(element)">Editar</button>
+      <button (click)="deleteTask(element.id)">Eliminar</button>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumnsForTasks"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumnsForTasks;"></tr>
+</table>
+<br>
+<br>
 
 
 

@@ -1,7 +1,5 @@
-import { ChangeDetectorRef, Component } from '@angular/core';
+import { Component } from '@angular/core';
 import { EyeServiceService } from '../eyeService.service';
-import {MatTableModule} from '@angular/material/table';
-import { NgModel } from '@angular/forms';
 
 
 
@@ -13,8 +11,10 @@ import { NgModel } from '@angular/forms';
 export class EyeViewComponent {
 
   citizens: any[] = [];
+  tasks: any[] = [];
 
-  displayedColumns: string[] = ['Id', 'Nombre ciudadano', 'Acción'];
+  displayedColumnsForCitizens: string[] = ['Id', 'Nombre ciudadano', 'Acción'];
+  displayedColumnsForTasks: string[] = ['Id', 'Descripción tarea', 'Dia de la semana','Acción'];
 
 
   constructor(private eyeService: EyeServiceService
@@ -24,6 +24,10 @@ export class EyeViewComponent {
   ngOnInit() {
     this.eyeService.getCitizens().subscribe((data: any[]) => {
       this.citizens = data;
+    });
+
+    this.eyeService.getTasks().subscribe((data: any[]) => {
+      this.tasks = data;
     });
 
 
@@ -45,7 +49,6 @@ editCitizen(args: any){
 
   this.eyeService.updateCitizen(citizen).subscribe();
 
-
 }
 
 
@@ -53,8 +56,36 @@ editCitizen(args: any){
 deleteCitizen(args: any){
   this.eyeService.deleteCitizen(args).subscribe();
 
-  this.eyeService.getCitizens().subscribe();
 }
+
+
+
+addTask(){
+  var inputValue = (<HTMLInputElement>document.getElementById("citizenName")).value;
+
+  this.eyeService.registerCitizen(inputValue).subscribe();
+
+}
+
+editTask(args: any){
+
+  var citizen = {
+    "id": args.id,
+    "nombre": args.nombre
+  }
+
+  this.eyeService.updateCitizen(citizen).subscribe();
+
+}
+
+
+
+deleteTask(args: any){
+  this.eyeService.deleteCitizen(args).subscribe();
+
+
+}
+
 
 
 }
