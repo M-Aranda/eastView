@@ -39,6 +39,9 @@ export class WitchViewComponent {
       this.assignatedTasks = data;
     });
 
+    this.selectedWeekDay = 1;
+    this.selectedCitizen = 1;
+
 
 
 

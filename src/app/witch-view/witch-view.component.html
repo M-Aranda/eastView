@@ -47,15 +47,18 @@
 <br>
 <label>Tarea</label>
 <br>
+
 <select matNativeControl id="selectorDeTareas" [(ngModel)]="selectedWeekDay">
   <option *ngFor="let item of tasks" [value]="item.id">{{ item.descripcionTarea }}</option>
 </select>
+<br>
 <br>
 <label>Ciudadano</label>
 <br>
 <select matNativeControl id="selectorDeCiudadanos" [(ngModel)]="selectedCitizen" >
   <option *ngFor="let item of citizens" [value]="item.id">{{ item.nombre }}</option>
 </select>
+<br>
 <br>
 <button (click)="assignTask()">Asignar tarea</button>
 <br>
