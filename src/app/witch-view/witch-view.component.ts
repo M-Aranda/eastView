@@ -54,8 +54,18 @@ filterTasksByWeekDay(args: number){
 
 }
 
-asignarTarea(){
+assignTask(){
 
+  var tarea = (<HTMLInputElement>document.getElementById("selectorDeTareas")).value;
+  var ciudadano = (<HTMLInputElement>document.getElementById("selectorDeCiudadanos")).value;
+
+  var assignment ={
+    "idCiudadano": ciudadano,
+    "idTarea": tarea
+  }
+
+
+  this.eyeService.assignTask(assignment).subscribe();
 
 
 }

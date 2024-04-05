@@ -57,6 +57,11 @@ export class EyeServiceService {
     return this.http.get<any[]>(`${this.assignatedTasksApiUrl}/GetAssignatedTasks`);
   }
 
+  assignTask(assignment: any): Observable<any> {
+
+    return this.http.post<any>(`${this.assignatedTasksApiUrl}/AssignTask`, assignment);
+  }
+
 
 
 }

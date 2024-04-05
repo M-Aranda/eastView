@@ -57,7 +57,7 @@
   <option *ngFor="let item of citizens" [value]="item.id">{{ item.nombre }}</option>
 </select>
 <br>
-<button (click)="asignarTarea()">Asignar tarea</button>
+<button (click)="assignTask()">Asignar tarea</button>
 <br>
 <br>
 <table mat-table [dataSource]="assignatedTasks">
